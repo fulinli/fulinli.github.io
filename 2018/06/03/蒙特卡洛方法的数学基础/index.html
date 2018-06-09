@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Flynn&#39;s World">
 <meta property="og:description" content="蒙特卡洛方法的数学基础蒙特卡洛方法简介 起初我们不想让这个课程太长，包含如此多关于概率和统计的知识，但事实上，如果你想要理解蒙特卡洛方法，你需要在概率和统计理论上做大量的工作。 在这一章，我们将试图给出蒙特卡洛方法是什么、是如何做到的、为什么这样做以及它被用来做什么。这种快速的介绍，是针对那些没有时间或者想法想继续探索的读者。但是如果你真的想学习这些方法究竟是什么，可能需要阅读接下来的所有章节。这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T15:10:23.852Z">
+<meta property="og:updated_time" content="2018-06-09T13:12:17.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒙特卡洛方法的数学基础">
 <meta name="twitter:description" content="蒙特卡洛方法的数学基础蒙特卡洛方法简介 起初我们不想让这个课程太长，包含如此多关于概率和统计的知识，但事实上，如果你想要理解蒙特卡洛方法，你需要在概率和统计理论上做大量的工作。 在这一章，我们将试图给出蒙特卡洛方法是什么、是如何做到的、为什么这样做以及它被用来做什么。这种快速的介绍，是针对那些没有时间或者想法想继续探索的读者。但是如果你真的想学习这些方法究竟是什么，可能需要阅读接下来的所有章节。这">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  717
+                  1,727
                 </span>
               
 
@@ -394,7 +394,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  6
                 </span>
               
             </div>
@@ -420,8 +420,12 @@
 <p>在这一章，我们将试图给出蒙特卡洛方法是什么、是如何做到的、为什么这样做以及它被用来做什么。这种快速的介绍，是针对那些没有时间或者想法想继续探索的读者。但是如果你真的想学习这些方法究竟是什么，可能需要阅读接下来的所有章节。<br>这一节课更多的是介绍建立蒙特卡罗方法的数学工具，方法本身在下一节课中解释（实践中的蒙特卡洛方法）</p>
 </blockquote>
 <h3 id="关于蒙特卡洛的前言"><a href="#关于蒙特卡洛的前言" class="headerlink" title="关于蒙特卡洛的前言"></a>关于蒙特卡洛的前言</h3><p>像许多其他你可以在CG文献中看到的专业术语一样，蒙特卡洛对于许多没学过的人来讲是一个神奇的词语。与计算机图形学中的一些其他数学工具相比，例如比较复杂的球谐函数，蒙特卡洛方法的原理还是相对简单的（并不是说很容易）。这是非常棒的，因为这个方法解决各种各样的复杂问题极其有效。</p>
-<p>蒙特卡洛积分或者近似（这两个术语都被使用但是积分通常更好）是一个古老的方法（第一篇记载的文献引用可以在18世纪早期数学家Comte de Buffon的一些出版物中找到），但是直到20世纪40年代左右才被命名为现在这个名字。<br>蒙特卡洛是摩纳哥公国一个以赌场闻名的城市的名字。正如我们将在本课中所讲，蒙特卡罗方法与统计领域有很大的关系，就其本身而言是很有用的，你可以了解你在游戏中输赢的机会，例如轮盘赌，任何包含投骰子、抽卡牌的游戏等等，这些都可以被视为随机过程。<br>因此蒙特卡洛这个名字取得非常合适因为它能体现出这个方法的特点。蒙特卡洛方法本身，在一些著名的数学家（(Fermi, Ulam, von Neumann, Metropolis等等）帮助发展和正规化后，在原子弹开发的研究中至关重要（它被用来研究裂变材料中子输运的概率行为），它在现代科学中的普及与计算机有着很大关系。不使用计算机，蒙特卡洛积分是枯燥无味的，因为它需要大量的计算，显然计算机非常善于做这些。</p>
-
+<p>蒙特卡洛积分或者近似（这两个术语都被使用但是积分通常更好）是一个古老的方法（第一篇记载的文献引用可以在18世纪早期数学家Comte de Buffon的一些出版物中找到），但是直到20世纪40年代左右才被命名为现在这个名字。<br>蒙特卡洛是摩纳哥公国一个以赌场闻名的城市的名字。正如我们将在本课中所讲，蒙特卡罗方法与统计领域有很大的关系，就其本身而言是很有用的，你可以了解你在游戏中输赢的机会，例如轮盘赌，任何包含投骰子、抽卡牌的游戏等等，这些都可以被视为随机过程。<br>因此蒙特卡洛这个名字取得非常合适因为它能体现出这个方法的特点。蒙特卡洛方法本身，在一些著名的数学家（(Fermi, Ulam, von Neumann, Metropolis等等）帮助发展和正规化后，在原子弹开发的研究中至关重要（它被用来研究裂变材料中子输运的概率行为），它在现代科学中的普及与计算机有着很大关系。不使用计算机，蒙特卡洛积分是枯燥无味的，因为它需要大量的计算，显然计算机非常善于做这些。既然我们已经回顾了一些历史并且介绍了一些关于这个方法名字起源的知识，让我们来解释一下蒙特卡洛是什么。然而不幸的是，正如前面简单提到的，蒙特卡洛方法的数学含义是基于许多统计学和概率论中的重要概念。我们首先不得不回顾一下这些概念，然后再看蒙特卡洛方法本身。</p>
+<h3 id="蒙特卡洛方法简介-1"><a href="#蒙特卡洛方法简介-1" class="headerlink" title="蒙特卡洛方法简介"></a>蒙特卡洛方法简介</h3><p>什么是蒙特卡洛方法？蒙特卡洛背后的概念既简单又健壮。然而正如我们接下来很快要看到的，它需要大量的计算量，这也是它随着计算机技术的出现变得普及的原因。生活中的许多事情都很难精确的估计，尤其是在其涉及到很大规模的数目时。例如，虽然不是不可能的，但是要花费很长的时间来数1Kg罐子中可能装有多少软糖。你可以一个一个的用手去数，但是这将会消耗很长的时间。计算一个国家成年人的平均身高，需要测量每个成人的身高，把他们加在一起然后除以人口总数。同样，这个工作也会消耗很久的时间。我们可以做的是取一个样本然后计算它的平均身高，它不可能给你准确的整个人口的平均身高，但是这种方法会给出一个非常近似于准确数字的结果。我们在准确性和速度之间做了权衡。民意调查也被公认为是统计也是基于这个我们都很熟悉的准则。有趣的是，整个人口的近似值和准确的平均值有时可能是完全相同的。这只是偶然的，大多数情况下是不同的。我们可能想问的一个问题是，有什么不同呢？事实上，当样本规模增大时，这个近似值将会收敛到确切值。也就是说，近似值与真实结果之间的误差，会在随着样本规模的增大而变小。直观的说，这个想法很容易掌握，然而我们将会在下一章中看到，它应该（从数学的角度来说）被不同的表述或解释。注意为了公平，样本中的元素需要随机的以相等的概率来选择。</p>
+<p>注意，一个人的身高是一个随机数。它可以是任意值，这也是随机事物的本质。因此，当你在人们中抽样时，通过随机的选取人群然后测量他们的身高来近似平均身高，每一个测量值都是一个随机数（因为样本中的每个人都有可能有不同的身高）。有趣的是，一组随机数的和，产生了一个新的另一个随机数。如果你不能预测相加的每个数是多少，你如何预测它们相加的结果呢？因此，相加的结果是一个随机数，而且组成相加的每个数字也是随机数。</p>
+<p>对于一个数学家来说，一个人群的身高被称为随机变量，因为构成这个人群的人的身高是随机变化的。我们通常用大写字母表示随机变量，字母\(X\)经常被使用。</p>
+<p>在统计学中，组成人群的每一个元素，用一个小写的字母表示，通常\(x\)也被经常使用。例如，如果我们写\(x_2\),这表示人群中第二个人的身高（随机的）。所有的这些\(x\)也可以被看作是随机变量\(X\)的可能结果。如果我们把\(X\)称为随机变量（人群的身高），我们可以用下面的数学公式来表示从样本中近似成人平均身高的概念：</p>
+<script type="math/tex; mode=display">(Approximation(Average(X))={1\over N}{\sum_{n=1}^N{x_n}}</script>
       
     </div>
     
@@ -439,7 +443,7 @@
   <p><span>本文标题:</span><a href="/2018/06/03/蒙特卡洛方法的数学基础/">蒙特卡洛方法的数学基础</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 嘉木 的个人博客">嘉木</a></p>
   <p><span>发布时间:</span>2018年06月03日 - 23:06</p>
-  <p><span>最后更新:</span>2018年06月03日 - 23:06</p>
+  <p><span>最后更新:</span>2018年06月09日 - 21:06</p>
   <p><span>原始链接:</span><a href="/2018/06/03/蒙特卡洛方法的数学基础/" title="蒙特卡洛方法的数学基础">https://fulinli.github.io/2018/06/03/蒙特卡洛方法的数学基础/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://fulinli.github.io/2018/06/03/蒙特卡洛方法的数学基础/"  aria-label="复制成功！"></i></span>
   </p>
@@ -668,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法的数学基础"><span class="nav-number">1.</span> <span class="nav-text">蒙特卡洛方法的数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛方法简介"><span class="nav-number">1.1.</span> <span class="nav-text">蒙特卡洛方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于蒙特卡洛的前言"><span class="nav-number">1.1.1.</span> <span class="nav-text">关于蒙特卡洛的前言</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法的数学基础"><span class="nav-number">1.</span> <span class="nav-text">蒙特卡洛方法的数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛方法简介"><span class="nav-number">1.1.</span> <span class="nav-text">蒙特卡洛方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于蒙特卡洛的前言"><span class="nav-number">1.1.1.</span> <span class="nav-text">关于蒙特卡洛的前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡洛方法简介-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">蒙特卡洛方法简介</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -717,7 +721,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共736字</span>
+  <span class="post-count">博客全站共1.7k字</span>
 </div>
 
         
@@ -967,6 +971,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
