@@ -101,10 +101,12 @@
 <meta property="og:site_name" content="Flynn&#39;s World">
 <meta property="og:description" content="自动规则合规性检查要求从规范文本文档中自动提取需求, 并且形式化为计算机可处理的规则表示形式. 这样的信息提取(IE)是一个具有挑战性的任务, 需要进行复杂的分析和文本处理. 自然语言处理(NLP)的目的是使计算机以人类的方式处理自然语言文本. 本文提出了一种基于语义, 规则的NLP方法, 用于从建筑法规文件中自动提取信息. 所提出的方法在IE中采用基于模式匹配的信息抽取规则(IE rules)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T09:31:08.784Z">
+<meta property="og:image" content="https://fulinli.github.io/2018/08/13/Semantic-NLP-Based-Information-Extraction-from-Construction-Regulatory-Documents-for-Automated-Compliance-Checking/7phase.png">
+<meta property="og:updated_time" content="2018-08-13T09:53:13.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Semantic NLP-Based Information Extraction from Construction Regulatory Documents for Automated Compliance Checking">
 <meta name="twitter:description" content="自动规则合规性检查要求从规范文本文档中自动提取需求, 并且形式化为计算机可处理的规则表示形式. 这样的信息提取(IE)是一个具有挑战性的任务, 需要进行复杂的分析和文本处理. 自然语言处理(NLP)的目的是使计算机以人类的方式处理自然语言文本. 本文提出了一种基于语义, 规则的NLP方法, 用于从建筑法规文件中自动提取信息. 所提出的方法在IE中采用基于模式匹配的信息抽取规则(IE rules)">
+<meta name="twitter:image" content="https://fulinli.github.io/2018/08/13/Semantic-NLP-Based-Information-Extraction-from-Construction-Regulatory-Documents-for-Automated-Compliance-Checking/7phase.png">
 
 
 
@@ -429,7 +431,7 @@
 <p>从IE的表现性能来看, 对于四种不同的信息(实体, 属性, 关系和事件), 目前的表现精确率和回调率结果都在0.80-0.90的范围内. 最近的一个针对提取受保护的健康信息的研究报告其精确率和回调率分别为0.9668和0.9377. </p>
 <p>该段主要论述了NLP技术在建筑领域的应用, 提出了前人的不足之处, 说明与前人相比, 本研究的区别主要在以下几个方面: 1.解决了一个不同的应用问题(即ACC). NLP 方法, 算法和结果都是高度依赖于应用场景的. 2.解决了一个更深层次的NLP/IE任务. 作者的目的是自动处理文本从而提取规范需求或者规则, 并且将他们表示为逻辑句子. 3.使用了一个更深的语义方法用于NLP. 作者使用一个领域本体论用于识别文本语法特征. 使用领域特定语义和”柔性信息元素”去实现相对深层次的NLP. </p>
 <h2 id="Background—Phrase-Structure-Grammar"><a href="#Background—Phrase-Structure-Grammar" class="headerlink" title="Background—Phrase Structure Grammar"></a>Background—Phrase Structure Grammar</h2><p>主要介绍了短语文法——0型文法和上下文无关文法….没什么好说…</p>
-<h2 id="Proposed-Information-Extraction-Methodology"><a href="#Proposed-Information-Extraction-Methodology" class="headerlink" title="Proposed Information Extraction Methodology"></a>Proposed Information Extraction Methodology</h2><p>简要叙述了IE方法, 将该方法分为七个阶段, 迭代提高性能. </p>
+<h2 id="Proposed-Information-Extraction-Methodology"><a href="#Proposed-Information-Extraction-Methodology" class="headerlink" title="Proposed Information Extraction Methodology"></a>Proposed Information Extraction Methodology</h2><p>简要叙述了IE方法, 将该方法分为七个阶段, 迭代提高性能.<br><img src="/2018/08/13/Semantic-NLP-Based-Information-Extraction-from-Construction-Regulatory-Documents-for-Automated-Compliance-Checking/7phase.png" alt="你想输入的替代文字"></p>
 <h3 id="Phase-Ⅰ—Information-Representation"><a href="#Phase-Ⅰ—Information-Representation" class="headerlink" title="Phase Ⅰ—Information Representation"></a>Phase Ⅰ—Information Representation</h3><p>方法中的最终表现格式是一个或更多个可以直接用于自动合规性检查推理的逻辑句子. 为了中间处理, 提出一个新的ACC元组的概念, 用于表示提取的信息. 以元组的形式表示易于计算机的操纵和评价.<br>在ACC元组的表示中, 每一个元素都被称为一个”语义信息元素”(simple semantic information element, SIE), 它是(1)一个本体概念(2)一个本体关系(3)一个义务操作符指示器(deontic operator indicator)(4)一种约束关系(restriction). 由此又产生以下几种类型的语义信息元素: 简单语义信息元素(simple SIE)对于复杂语义信息元素(complex SIE), 刚性语义信息元素(rigid SIE)对于柔性语义信息元素(flexible SIE).<br>为了进一步将信息转换成逻辑句子, 使用语义映射步骤将提取的信息元素实例与其各自的语义概念相匹配: (1)对于本体概念或关系, 它们的信息元素实例被映射到对应的概念和关系上. 例如”courts”映射到”court”, “net area”映射到”net_area”, “not less than”映射到”greater_than_or_equal”；(2)对于义务操作符指示器, 它们的实例会被映射成为指示义务概念(indicated deontic concepts)；例如”shall”会被映射到”obligation”；(3)对于约束关系, 它们的实例将被分解, 映射到一个或多个本体概念或关系上. 例如, “between the insulation and the roof sheathing”会被映射到”relation(between, insulation, roof_sheathing)”.<br>提取出来的信息元素实例(以ACC元组的形式), 在进行必要的语义映射后将会进一步转化为霍尔子句类型(Horn-Clause-type)的逻辑句子, 用于合规性检查的逻辑演绎和推导. </p>
 <h3 id="Phase-Ⅱ—Information-Representation"><a href="#Phase-Ⅱ—Information-Representation" class="headerlink" title="Phase Ⅱ—Information Representation"></a>Phase Ⅱ—Information Representation</h3><h4 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h4><p>分词, 没啥好说. </p>
 <h4 id="Sentence-Splitting"><a href="#Sentence-Splitting" class="headerlink" title="Sentence Splitting"></a>Sentence Splitting</h4><p>分句, 没啥好说. </p>
