@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Abstract Development of automated building code compliance checking systems requires appropriate representations for building codes. Building codes are complex documents written in natural languages,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Representation of Building Codes for Automated Compliance Checking">
+<meta property="og:url" content="https://fulinli.github.io/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/index.html">
+<meta property="og:site_name" content="Flynn&#39;s World">
+<meta property="og:description" content="Abstract Development of automated building code compliance checking systems requires appropriate representations for building codes. Building codes are complex documents written in natural languages,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-10T09:12:08.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Computer Representation of Building Codes for Automated Compliance Checking">
+<meta name="twitter:description" content="Abstract Development of automated building code compliance checking systems requires appropriate representations for building codes. Building codes are complex documents written in natural languages,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://fulinli.github.io/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/"/>
+
+
+
+
+
+  <title>Computer Representation of Building Codes for Automated Compliance Checking | Flynn's World</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f727cf94ceeec60fa8632e43a4e9bf02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Flynn's World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">确认过眼神，你是一个好人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fulinli.github.io/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘉木">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flynn's World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Computer Representation of Building Codes for Automated Compliance Checking</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T16:30:35+08:00">
+                2019-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/" class="leancloud_visitors" data-flag-title="Computer Representation of Building Codes for Automated Compliance Checking">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span 
+				 class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  5,909
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><blockquote>
+<p>Development of automated building code compliance checking systems requires appropriate representations for building codes. Building codes are complex documents written in natural languages, and the development of computable representations is challenging. This paper presents a new model and an accompanying modeling methodology for the representation of building codes that may be utilized in the development of future automated compliance checking systems. <strong>The new model combines the semantic modeling approach of the SMARTcodes project with the theoretical foundations established by Nyman and Fenves, namely the four level representation.</strong> This hybrid model organizes the representation in four levels and allows for separate modeling of domain concepts, individual rule statements, relationships between rules, and the overall organization of the building code. The model is evaluated with a case study. The İzmir Municipality Housing and Zoning Code is chosen as it is representative of complex building codes that are in effect throughout Turkey. The formalizable rules in the section of Izmir code that apply to all types of buildings, are represented in computer implementable format based on the new model. The research presented in this paper shows that decomposing a building code into four levels and modeling rules based on the semantic-oriented paradigm is an effective modeling strategy for representing building codes in a computable form.</p>
+</blockquote>
+<p>自动合规性检查系统需要合适的建筑规范表示形式。建筑规范是由自然语言描述的复杂文档，因此开发计算机形式化的建筑规范表示是一项难题。这篇文章提出了一种新的模型和构造模型的方法来表示建筑规范，以用于未来的自动合规性检查系统。</p>
+<p>提出的方法将SMARTcodes项目中的语义建模方法与Nyman和Fenves建立的四级表示法（four level representation）理论相结合。此混合模型将表示形式分为四级并且允许对领域概念，单个规则陈述，规则间的关系以及整个建筑规范组织进行单独建模。</p>
+<p>通过一个研究案例评估了提出的模型。İzmir Municipality Housing and Zoning Code作为表示模型的样例，将其中可形式化的规则通过新模型用计算机形式表示。此文的研究表明将建筑规范分解为四级并且基于面向语义范式对规则建模是对于建筑规范的计算机形式化表示的一种有效建模策略。</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><blockquote>
+<p>Today, although every building project is modeled in a digital/BIM environment, compliance checking is a manual process increasing the delays as well as the risk for errors in evaluation.</p>
+</blockquote>
+<p>如今，尽管任何一个建筑项目都在数字化环境下建模，然而合规性检查仍然是一个人工完成的过程，增加了工程审核工作的延迟和出错的风险。</p>
+<blockquote>
+<p>Research into developing automated compliance checking systems has focused mostly on three areas: Representation of building codes in computational format, definition of building model views, and compliance checking algorithms and reporting.</p>
+</blockquote>
+<p>关于自动合规性检查系统的研究主要集中在三个领域：建筑规范的计算机形式表示，建筑模型的表示定义以及合规性检查算法和检查报告。</p>
+<blockquote>
+<p>Compliance checking systems primarily require appropriate computer-based models of both building codes and building designs.</p>
+</blockquote>
+<p>合规性检查系统首先需要合适的建筑规范信息和建筑模型信息的计算机表示模型。</p>
+<blockquote>
+<p>Advances in BIM tools have finally established a standardized representation for building designs, even if it is currently deemed unsatisfactory. However, a standard representation for building codes is still not available.</p>
+</blockquote>
+<p>先进的BIM工具最终对建筑设计产生标准的表示形式，即使目前的看起来并不如意。然而，对于建筑规范的标准表示仍然缺失。</p>
+<blockquote>
+<p>This research focuses on the issue of building code representations and its scope is limited to it. Other issues impeding the development of automated compliance checking systems exists, such as building model extensions for code checking, and efficient querying and checking methods but they are beyond the scope of this work. Additionally, the scope is also limited to representing rules that are formalizable, i.e. can be evaluated computationally. Semi-formalizable rules that contain ambiguous statements or based on relative judgment (e.g. enough, adequate, etc.) as well as non-formalizable rules that require qualitative evaluations (e.g. aesthetic judgment) are not considered.</p>
+</blockquote>
+<p>本研究主要关注建筑规范的表示上，其余现存推动自动合规性检查系统发展的研究，例如用于规范检查的建筑模型的扩展以及高效查询和检查的方法等不在本研究的范围之内。除此以外，本研究也限制于关注可形式化的规范条款的表示，也就是说可通过计算而判断结果的规范条款。含有不明确陈述或者基于相对比较（例如足够，充分等）的半形式化规范条款以及需要定性判断（例如审美判断）的不可形式化的规范条款不在本研究的考虑范围内。</p>
+<h1 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h1><ul>
+<li><strong>Method 1: Initial Work——Decision table</strong><br>由Fenves等人在1969年最早提出决策表的表示方法 <sup><a href="#fn_2" id="reffn_2">2</a></sup> <sup><a href="#fn_3" id="reffn_3">3</a></sup>，之后该研究团队又研究了和重建了AISC（American Institute of Steel Construction）Specification，将ASIC建为四级模型<sup><a href="#fn_4" id="reffn_4">4</a></sup>。这个建筑规范的抽象逻辑结构模型作为建模方法还被用在SASE（Standard Analysis, Synthesis and Expression）软件系统中。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
+<li><strong>Method 2: Rule-based modeling approach——Expert System <sup><a href="#fn_6" id="reffn_6">6</a></sup> <sup><a href="#fn_7" id="reffn_7">7</a></sup> <sup><a href="#fn_8" id="reffn_8">8</a></sup> <sup><a href="#fn_9" id="reffn_9">9</a></sup> </strong><br>使用IF-THEN的形式代替决策表,谓词逻辑结构组成专家系统</li>
+<li><strong>Method 3: Object-oriented model of building codes</strong> 详情见原文,面向对象目测已经落伍</li>
+</ul>
+<blockquote>
+<p>Previous building code representation research efforts mainly focused on the <strong>hard-coding</strong> approach. The main disadvantage to this approach is that it requires a high-level of expertise in computer programming to define, write and maintain building codes.</p>
+</blockquote>
+<p>上述建筑规范表示方法的研究主要集中在硬编码(hard-coding)方式。这种方法的主要缺点是需要有较高计算机编程能力的专家定义、编写和维护建筑规范</p>
+<ul>
+<li><p><strong>Method 4: Semantic modeling approach</strong></p>
+<blockquote>
+<p>To overcome the deficiencies of hard-coded representation approaches, recently, attention has been directed towards the study of semantic modeling approach, which is relatively new method for knowledge representation.</p>
+</blockquote>
+<p>为了克服硬编码带来的缺陷，最近注意力转向了语义模型的方法，这是一种相对新颖的表示知识的方法。<br>最著名的是SMARTCode project<sup><a href="#fn_10" id="reffn_10">10</a></sup> ，但是由于缺少资金支持而停止。</p>
+</li>
+<li><p><strong>Method 5: Ontology-based approach<sup><a href="#fn_11" id="reffn_11">11</a></sup> <sup><a href="#fn_12" id="reffn_12">12</a></sup> <sup><a href="#fn_13" id="reffn_13">13</a></sup> <sup><a href="#fn_14" id="reffn_14">14</a></sup> </strong><br>基于本体论的建筑规范表示研究已经成为建筑规范表示的计算框架</p>
+</li>
+<li><p><strong>Method 6: Combining ontology with Artificaial Intelligence(AI) and Natural Language Processing(NLP) techniques</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>Previous building code models do have several limitations. One limitation is <strong>not being comprehensive enough</strong> compared to the complex nature of building codes and thus lacking the capability to represent all of the various types of information in building codes. A second limitation is that some building codes are <strong>hard-coded into the systems, thus lacking flexibility, maintainability, and user control (i.e. non-programmer users cannot add/modify the rules embedded in the system).</strong> Futhermore, any change in the building code necessitates changes in all such systems. A third limitation is that <strong>there is no direct mapping between the building code documents and building code models</strong>, making consistency checking between actual building code and code model difficult. A fourth limitation is <strong>focusing only on individual rule representation ignoring the overall building code</strong> and thus lacking capability to prevent contradictions among rules.</p>
+</blockquote>
+<p>过去的建筑规范模型存在诸多限制。第一是与建筑规范自身的复杂性相比不够全面，因此缺乏表示所有建筑规范信息类型的能力。第二是一些建筑规范被硬编码进入系统，因此缺乏灵活性、可维护性以及用户控制性（也就是说，不懂编程的用户无法增加/修改嵌入系统中的规则），而且建筑规范中的任何修改导致所有系统都得修改。第三是建筑规范文本与建筑规范模型之间没有直接的对应，导致建筑规范文本与建筑规范表示模型之间的不一致性。第四是集中在单个条款的表示而忽略了整个建筑规范因此缺少避免规则之间冲突的能力。</p>
+<p>为了解决上述问题，新的模型需要具备以下几个方面的能力：</p>
+<ul>
+<li><em>Independence</em>: 建筑规范的表示独立于合规性检查系统</li>
+<li><em>Conciseness</em>: 避免建筑规范表示的冗余</li>
+<li><em>Consistency</em>: 避免规则歧义和规则冲突</li>
+<li><em>Comprehensiveness</em>: 能够表示建筑规范中的各类信息(概念、需求、适用条件等)</li>
+<li><em>Maintainability</em>: 允许新增规则以及修改现有规则</li>
+</ul>
+<h1 id="The-new-building-code-representation"><a href="#The-new-building-code-representation" class="headerlink" title="The new building code representation"></a>The new building code representation</h1><h2 id="Four-level-representation"><a href="#Four-level-representation" class="headerlink" title="Four-level representation"></a>Four-level representation</h2><p>四级表示法：建筑规范被分为四个等级：</p>
+<ul>
+<li>The top level(organizational network)：表示整个建筑规范的组织结构</li>
+<li>The intermediate level(information network)：表示建筑规范条文之间的相互以来关系</li>
+<li>The detailed level：以决策表的形式表示单个条文</li>
+<li>The lowest level：由条文中的基础数据项组成</li>
+</ul>
+<p>尽管这种方法有扎实的理论基础，但是没有投入到实践中并且四级表示模型也没有在AEC界被广泛采纳，有两个重要的原因造成这个模型的失败，第一个是缺乏领域模型（domain model）确定领域特定对象以及它们的属性和关系，建模模型标准的缺失，导致大量数据项定义的错综复杂，也提高了建筑规范模型的复杂程度。第二个是有关建筑规范信息建模中使用的表示方法。用于规范表示的决策表和编程语言很快变得难以创建和维护，实际建筑标准太复杂而难以用这些方法表示。</p>
+<p>本文采用了四级表示法作为理论基础用于表示建筑规范信息，但是通过使用语义建模方法解决上述知识表示方法的问题。</p>
+<h2 id="Semantic-representation——RASE-model"><a href="#Semantic-representation——RASE-model" class="headerlink" title="Semantic representation——RASE model"></a>Semantic representation——RASE model</h2><p>以硬编码为基础的建筑规范信息表示方法对于非程序员的用户来说并不友好，在理想情况下，建筑规范的表示应该独立于合规性检查性系统，降低它们之间的耦合性。关键的问题是让不具备编程基础的建筑领域专家能够管理建筑规范的表述。语义模型的方法是一种满足上述要求的较新知识表示方法，SMARTcodes项目是该方法的一项典型案例。SMARTCode项目在2010年终止，但是该项目开发的标记概念和方法目前仍由AEC3(UK) Ltd维护。</p>
+<blockquote>
+<p>The SMARTcodes project aims to define computable rules using simple tools that enable non-programmers to create representations by tagging actual building code texts.</p>
+</blockquote>
+<p>SMARTcodes项目以使用简单工具定义可计算的规则为目标，从而使非程序员通过标记实际建筑规范文本创造建筑规范的表述。</p>
+<p>通过一种名为RASE（Requirement，Applicability，Selection，Exception）的建模方法对规则建模。RASE定义了四种组成元素来构成一条规则，建筑规范的规则可以分解为四个概念：</p>
+<ul>
+<li>Requirement：定义建筑物某一方面或多个方面必须满足的条件</li>
+<li>Applicability：定义该规则的要求适用于建筑物的哪一方面</li>
+<li>Selection：</li>
+<li>Exception：</li>
+</ul>
+<blockquote>
+<p>The RASE model utilizes these four constructs to identify the building code essence from the actual text of the code. Each of these four constructs has attributes such as a property, a comparator and a target value with a unit. Building code authors are able to markup these indicators that appear in the actual text of the code using SMARTcodes Builder software which creates an XML formatted version of the code</p>
+</blockquote>
+<p>RASE模型使用这四个组成元素来确定实际规范文本中的建筑规范精髓。每一个概念都包含属性，建筑规范的作者可以通过使用SMARTcode Builder软件标记这些出现在实际文本中的indicator，从而产生XML格式的建筑规范。</p>
+<p>对IMHZCode采用RASE方法建模，pilot study表明RASE方法给非程序员提供了一种简单的规范表示方法，并且能够修改。但是，也发现了三个缺点。第一个缺点是由于对每条规则描述单独建模，因此造成了不必要的重复和冗余。很多条规范重复描述的某个概念需要多次被标记出来，一旦某一个概念进行更新的时候还容易造成不一致的修改。在SMARTcodes 项目中，使用了external dictionary来避免不一致性。针对这个问题提出了Domain level来解决。</p>
+<p>第二个缺点是缺少单条规则之间的明确关系。RASE方法是在包含自动合规性检查系统的更高层面上进行处理，在SMARTcodes项目中，原始文本首先被人工标记，然后标记后的文本被结构化为XML格式的表示，在最后生成自动合规性检查系统中的可计算规则（以IFC限制层级的形式）。这种对单个规则描述完全独立的的处理方法简化了解构规则，尤其是对于非程序员的规范作者。然而，由于关系表示在自动检查系统中单独进行，因此不可能独立于自动检查系统来确保整个代码表示的正确性和一致性。而且这种分散的组织形式对于规范表示的维护是不利的，有必要独立于自动检查系统表示关系。提出management level和rule-set level解决上述问题。</p>
+<p>第三个缺点是关于RASE中的Exception组成元素。pilot study表明不需要对每一条规则的Selection和Exception元素进行单独表示。对于有Exception元素的规则，可将其表示为一条单独的规则，然后用OR逻辑关系进行链接，提出rule-set level解决该问题</p>
+<h2 id="The-new-representation"><a href="#The-new-representation" class="headerlink" title="The new representation"></a>The new representation</h2><p>混合模型的整体组织结构分为四级：</p>
+<ul>
+<li>Domain level:原始建筑规范文本中出现的所有概念以及其属性和关系</li>
+<li>Rule level: 建筑规范的单个规则描述以结构化的形式表示，使用domain level中建立的概念，基于改进的RASE方法对规则进行建模</li>
+<li>Rule-set level：规则对象之间的关系形成规则集</li>
+<li>Management level：通过连接和分类规则集反映建筑规范模型的整体组织结构</li>
+</ul>
+<h3 id="Domain-level"><a href="#Domain-level" class="headerlink" title="Domain level"></a>Domain level</h3><p>Domain level是混合模型的最底层，以面向对象的方法表示建筑规范文本中的概念和实体。</p>
+<blockquote>
+<p>Automated compliance checking systems assess building projects after mapping these concepts and entities in the build code representation to objects that constitute a building project.</p>
+</blockquote>
+<p>自动合规性检查系统将规范文本中出现的概念和实体映射到组成建筑工程的对象后评估建筑工程。<br>首先独立于规则外，定义领域特定的概念和实体以及其属性和关系从而创建领域模型（这里可以理解为BIM）。领域模型可以作为建筑规范建模过程中的对象库。例如RASE方法中的applicability元素就可以从这个领域对象库中选取填充。domain level解决了当多条规则涉及到同一个概念多次的时候引起的冗余，而且有利于揭示领域特定信息及其如何映射到建筑模型。</p>
+<h3 id="Rule-level"><a href="#Rule-level" class="headerlink" title="Rule level"></a>Rule level</h3><p>单独的规则陈述采用改进的RASE constructs以结构化的数据形式表示为规则对象（rule object）。规则陈述的语义用这些规则对象捕捉。每一条规则对象决定了一组领域模型对象的属性requirement，每一个requirement由特定的比较方法和值确定。<br>每一个规则对象（rule object）必须有一个需求对象（Requirement object）而且有若干个选择对象（Selection object）<br>Requirement objec和Selection object含有两个construct，”subject”和”predicate”。subject包含两个基本元素: a concept，a property（例如door-height），predicate包含三个基本元素：a comparator, a value, a unit。<br>在改进的RASE方法中，规则仅由Requirement和Selection元素组成，没有applicability和Exception。</p>
+<h3 id="Rule-set-level"><a href="#Rule-set-level" class="headerlink" title="Rule-set level"></a>Rule-set level</h3><p>混合模型的第三级是rule-set level，用于定义单个规则对象间的关系。对于一个实体根据条件的变化，需要受限于多个Requirement。在新模型中，多个相关的rule object使用AND和OR逻辑连接组成可计算的rule-set。AND逻辑表示某一个概念的属性需要同时满足不同的值，OR逻辑表示在某一个概念要求值根据不同情况而定。rule-set level是rule-set对象的集合，这个rule-set模型是对单个rule object的逻辑连接。</p>
+<h3 id="Management-level"><a href="#Management-level" class="headerlink" title="Management level"></a>Management level</h3><p>Management level以不同的形式组织rule-set objects。可以以原始建筑规范篇章的顺序组织，也可以根据规则限制的概念的类型的分类来组织。Management level允许不同的组织网络形式同时存在，同时也允许不同类型的建筑规范集合在一起从而挖掘可能存在的冲突。</p>
+<h1 id="Building-code-modeling-methodology"><a href="#Building-code-modeling-methodology" class="headerlink" title="Building code modeling methodology"></a>Building code modeling methodology</h1><p>构造新混合模型的方法由三个步骤组成：</p>
+<ul>
+<li>Stage 1：分析建筑规范以确定什么东西在自动合规性检查当中需要明确表示，并且记录有多少建筑规范可以可靠的建模。</li>
+<li>Stage 2：使用开发的表示模型表示建筑规范</li>
+<li>Stage 3：使用合规性检查系统对建筑规范模型进行实现</li>
+</ul>
+<h2 id="Analysis-Stage"><a href="#Analysis-Stage" class="headerlink" title="Analysis Stage"></a>Analysis Stage</h2><p>建筑规范的分析涉及以下三步：</p>
+<ul>
+<li>Determination of scope</li>
+<li>Decomposition of the building code</li>
+<li>Classification of the rule statements</li>
+</ul>
+<h3 id="Determination-of-the-scope"><a href="#Determination-of-the-scope" class="headerlink" title="Determination of the scope"></a>Determination of the scope</h3><p>确定建筑规范表示的范围，这一步的输出结果是列出建筑规范中需要建模的部分。</p>
+<h3 id="Decomposition-of-the-building-code"><a href="#Decomposition-of-the-building-code" class="headerlink" title="Decomposition of the building code"></a>Decomposition of the building code</h3><p>在第二步，所有的条款（clauses）分解为一列statements，这一步的输出结果是一个列statement而且确定了类别（例如rule，clarification，applicability，condition）的可读的文本文件。</p>
+<h3 id="Classification-of-the-rule-statements"><a href="#Classification-of-the-rule-statements" class="headerlink" title="Classification of the rule statements"></a>Classification of the rule statements</h3><p>在最后一个阶段，将rule statements分类从而记录有多少规范以及什么类型的规范可以建模。该步骤的输出结果是一个简单的表，列出了所有可以用计算机实现格式表示的rules。在一步的工作需要建筑规范领域专家和软件工程师的交叉学科协作（Cross-disciplinary collaboration）。</p>
+<h2 id="Representation-Stage"><a href="#Representation-Stage" class="headerlink" title="Representation Stage"></a>Representation Stage</h2><p>建筑规范表示的总体结构分为两种：一种是依据建筑信息模型的结构表示，一种是依据建筑规范的结构表示。前者可以实现更快的rule execution，而后者可以实现更快的code generation以及higher level of maintainability。在该研究中使用了依据建筑规范结构的表示。在确定了建筑规范表示的结构后，即以开发的表示模型对建筑规范建模。</p>
+<h3 id="Representation-of-domain-concepts"><a href="#Representation-of-domain-concepts" class="headerlink" title="Representation of domain concepts"></a>Representation of domain concepts</h3><p>建筑规范领域专家和编程专家协作，分三步完成：</p>
+<blockquote>
+<ol>
+<li>Extracting and listing the concepts and entities referenced in the building code document</li>
+<li>Identifying the required attributes of the objects and determining the relationships between them</li>
+<li>Implementing the representation as a library of objects in a computer-based form.(Existing frameworks such as the IFC may be utilized in this implementation stage.)</li>
+</ol>
+</blockquote>
+<ol>
+<li>抽取和列出建筑规范文本中涉及到的概念和实体</li>
+<li>确定对象需要的属性并且确定对象间的关系</li>
+<li>实现对象库的计算机形式表示（可以使用现存的IFC框架）</li>
+</ol>
+<p>这一步的输出结果是一个领域模型（domain model）用于在第二步规则建模中使用。需要注意的是，可以全部以面向对象的方法表示，例如kitchen door作为door的子集，但是这种方法会增加领域模型的复杂程度。也可以将kitchen door映射到所有relatedSpace属性值为kitchen的door对象上，创建一个概念映射表（concept-mapping table）。为了避免产生大量的特殊子类，采用了后者。</p>
+<h3 id="Representation-of-rule-statements"><a href="#Representation-of-rule-statements" class="headerlink" title="Representation of rule statements"></a>Representation of rule statements</h3><p>将建筑规范中的individual rule statement建立为rule object的结构化数据形式。这些rule objects形成rule level。</p>
+<h3 id="Representation-of-relationships-between-rules"><a href="#Representation-of-relationships-between-rules" class="headerlink" title="Representation of relationships between rules"></a>Representation of relationships between rules</h3><p>与同一subject相关的related rule objects使用逻辑连接在一起形成可计算的rule-sets。这些rule-sets形成rule-set level。</p>
+<h3 id="Representation-of-the-building-code-organization"><a href="#Representation-of-the-building-code-organization" class="headerlink" title="Representation of the building code organization"></a>Representation of the building code organization</h3><p>将第三步中的rule-set objects分类形成整个建筑规范表示的组织。</p>
+<h2 id="Implementation-stage"><a href="#Implementation-stage" class="headerlink" title="Implementation stage"></a>Implementation stage</h2><p>建筑规范模型在合规性检查应用中的实现是最后一个阶段，最后一个阶段包含两个步骤：</p>
+<h3 id="Implementation-of-the-building-code-model"><a href="#Implementation-of-the-building-code-model" class="headerlink" title="Implementation of the building code model"></a>Implementation of the building code model</h3><p>在合规性检查应用中实际实现建筑规范的表示。迄今为止，由典型的BIM平台创建的建筑信息模型不包括大多建筑规范所需要的细节等级（level of detail）。应确定建筑规范领域模型的需求，并将其用于增强BIM标准（IFC），以便进行合适的数据交换。领域模型作为表示的第一层实际上体现了构建建筑领域模型的需求，应该分析从建筑信息模型中可以获得多少需要的数据。</p>
+<h3 id="Testing-and-validation"><a href="#Testing-and-validation" class="headerlink" title="Testing and validation"></a>Testing and validation</h3><blockquote>
+<p>The Building code model should be evaluated in terms of the three requisite properties found in literature (completeness, uniqueness, and correctness). These requisites are used to evaluate whether building code models are appropriately represented in computational format by most of the research on representation of building codes.</p>
+</blockquote>
+<p>建筑规范模型应该根据文献中发现的三个要素角度进行评估，这三个必要条件被大多数建筑规范计算机表示的研究用来评估建筑规范模型是否合适。</p>
+<ul>
+<li>Completeness, meaning that the code model can be applied to all possible situations (conditions) within its scope;</li>
+<li>Uniqueness, meaning that the model has no redundant rules and has no contradicting rules and generates the same unique result every time, when applied under a given set of conditions;</li>
+<li>Correctness (clarity), meaning that the result of applying the model must be consistent with the objective of the building code.<br>Completeness和Uniqueness是和规范组织形式相关的句法属性，而Correctness是和意义更相关的语义属性。</li>
+</ul>
+<h1 id="Case-study-implementation-and-evaluation"><a href="#Case-study-implementation-and-evaluation" class="headerlink" title="Case study(implementation and evaluation)"></a>Case study(implementation and evaluation)</h1><h2 id="Analysis-of-IMHZCode"><a href="#Analysis-of-IMHZCode" class="headerlink" title="Analysis of IMHZCode"></a>Analysis of IMHZCode</h2><h2 id="Representation-of-IMHZCode"><a href="#Representation-of-IMHZCode" class="headerlink" title="Representation of IMHZCode"></a>Representation of IMHZCode</h2><h3 id="Domain-objects-and-concept-mapping-list"><a href="#Domain-objects-and-concept-mapping-list" class="headerlink" title="Domain objects and concept mapping list"></a>Domain objects and concept mapping list</h3><h3 id="Rule-objects"><a href="#Rule-objects" class="headerlink" title="Rule objects"></a>Rule objects</h3><h3 id="Rule-set-objects"><a href="#Rule-set-objects" class="headerlink" title="Rule-set objects"></a>Rule-set objects</h3><h3 id="Rule-set-group-objects"><a href="#Rule-set-group-objects" class="headerlink" title="Rule-set group objects"></a>Rule-set group objects</h3><h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><h3 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h3><h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><blockquote id="fn_1">
+<sup>1</sup>. Macit İlal, S., &amp; Günaydın, H. M. (2017). Computer representation of building codes for automated compliance checking. Automation in Construction, 82(May 2016), 43–58. <a href="https://doi.org/10.1016/j.autcon.2017.06.018" target="_blank" rel="noopener">https://doi.org/10.1016/j.autcon.2017.06.018</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. S.J. Fenves, Tabular decision logic for structural design, J. Struct. Div. ASCE 92 (1966) 473–490 <a href="http://cedb.asce.org/CEDBsearch/record.jsp?dockey=0014476" target="_blank" rel="noopener">http://cedb.asce.org/CEDBsearch/record.jsp?dockey=0014476</a>.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. S.J. Fenves, E.H. Gaylord, S.K. Goel, Decision Table Formulation of the 1969 AISC Specification, in Civil Engineering Studies SRS-347. <a href="http://hdl.handle.net/2142/" target="_blank" rel="noopener">http://hdl.handle.net/2142/</a> 14275, (1969).<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. D.J. Nyman, S.J. Fenves, R.N. Wright, Restructuring study of the AISC specification, Civil Engineering Studies SRS-393, Department of Civil Engineering, University of Illinois Engineering Experiment Station, Urbana-Champaign, 1973, <a href="http://hdl.handle.net/2142/13806" target="_blank" rel="noopener">http://hdl.handle.net/2142/13806</a>.<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. S.J. Fenves, R.N. Wright, F.I. Stahl, K.A. Reed, Introduction to SASE: Standards Analysis, Synthesis and Expression, NBSIR, Editor, National Bureau of Standards, Washington, D.C., 1987, <a href="http://dx.doi.org/10.6028/NBS.IR.87-3513" target="_blank" rel="noopener">http://dx.doi.org/10.6028/NBS.IR.87-3513</a>.<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. M.A. Rosenman, J.S. Gero, Design codes as expert systems, Comput. Aided Des. 17 (9) (1985) 399–409, <a href="http://dx.doi.org/10.1016/0010-4485(85)90287-8" target="_blank" rel="noopener">http://dx.doi.org/10.1016/0010-4485(85)90287-8</a>.<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. C.L. Dym, R.P. Henchey, E.A. Delis, S. Gonick, A knowledge-based system for au- tomated architectural code checking, Comput. Aided Des. 20 (3) (1988) 137–145, <a href="http://dx.doi.org/10.1016/0010-4485(88)90021-8" target="_blank" rel="noopener">http://dx.doi.org/10.1016/0010-4485(88)90021-8</a>.<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. W. Rasdorf, T. Wang, Generic design standards processing in an expert system environment, J. Comput. Civ. Eng. 2 (1) (1988) 68–87, <a href="http://dx.doi.org/10.1061/(ASCE)0887-3801(1988)2:1(68" target="_blank" rel="noopener">http://dx.doi.org/10.1061/(ASCE)0887-3801(1988)2:1(68</a>).<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_9">
+<sup>9</sup>. B. Kumar, Knowledge Processing for Structural Design, Computational Mechanics Publications, Southampton, UK, 1995 <a href="http://hdl.handle.net/1842/7492ISBN1853123765" target="_blank" rel="noopener">http://hdl.handle.net/1842/7492ISBN1853123765</a>.<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_10">
+<sup>10</sup>. AEC3 International Code Council, [February, 23, 2013], Available from: <a href="http://www.aec3.com/en/5/5_013_ICC.htm" target="_blank" rel="noopener">http://www.aec3.com/en/5/5_013_ICC.htm</a>, (2012).<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. A. Yurchyshyna, C. Faron-Zucker, N.L. Thanh, A. Zarli, Towards an ontology-enabled approach for modeling the process of conformity checking in construction, in: Z. Bellahsene, et al. (Ed.), CAiSE Forum, 2008, pp. 21–24 Montpellier, France <a href="http://ceur-ws.org/Vol-344/paper6.pdf" target="_blank" rel="noopener">http://ceur-ws.org/Vol-344/paper6.pdf</a>.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_12">
+<sup>12</sup>. P. Pauwels, D.V. Deursen, R. Verstraeten, J.D. Roo, R.D. Meyer, R.V.d. Walle, J.V. Campenhout, A semantic rule checking environment for building performance checking, Autom. Constr. 20 (5) (2011) 506–518, <a href="http://dx.doi.org/10.1016/j" target="_blank" rel="noopener">http://dx.doi.org/10.1016/j</a>. autcon.2010.11.017.<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_13">
+<sup>13</sup>. J. Dimyadi, P. Pauwels, M. Spearpoint, C. Clifton, R. Amor, Jakob Beetz, L.V. Berlo, T. Hartmann, R. Amor (Eds.), Querying a regulatory model for compliant building design audit, 32nd International CIB W78 Conference, 2015, pp. 139–148 Eindhoven, the Netherlands <a href="http://hdl.handle.net/1854/LU-6890582" target="_blank" rel="noopener">http://hdl.handle.net/1854/LU-6890582</a>.<a href="#reffn_13" title="Jump back to footnote [13] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_14">
+<sup>14</sup>. T.H. Beach, Y. Rezgui, H. Li, T. Kasim, A rule-based semantic approach for auto- mated regulatory compliance in the construction sector, Expert Syst. Appl. 42 (12) (2015) 5219–5231, <a href="http://dx.doi.org/10.1016/j.eswa.2015.02.029" target="_blank" rel="noopener">http://dx.doi.org/10.1016/j.eswa.2015.02.029</a>.<a href="#reffn_14" title="Jump back to footnote [14] in the text."> &#8617;</a>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/">Computer Representation of Building Codes for Automated Compliance Checking</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 嘉木 的个人博客">嘉木</a></p>
+  <p><span>发布时间:</span>2019年02月10日 - 16:02</p>
+  <p><span>最后更新:</span>2019年02月10日 - 17:02</p>
+  <p><span>原始链接:</span><a href="/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/" title="Computer Representation of Building Codes for Automated Compliance Checking">https://fulinli.github.io/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://fulinli.github.io/2019/02/10/Computer-Representation-of-Building-Codes-for-Automated-Compliance-Checking/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+	</div>
+	
+	<div>
+    
+	</div>
+	
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打发点咯！嘤嘤嘤</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="嘉木 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/Semantic-NLP-Based-Information-Extraction-from-Construction-Regulatory-Documents-for-Automated-Compliance-Checking/" rel="next" title="Semantic NLP-Based Information Extraction from Construction Regulatory Documents for Automated Compliance Checking">
+                <i class="fa fa-chevron-left"></i> Semantic NLP-Based Information Extraction from Construction Regulatory Documents for Automated Compliance Checking
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="嘉木" />
+          <p class="site-author-name" itemprop="name">嘉木</p>
+           
+              <p class="site-description motion-element" itemprop="description">I know nothing</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/FringFlynn" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-rocket"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fulinli" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related-work"><span class="nav-number">3.</span> <span class="nav-text">Related work</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-new-building-code-representation"><span class="nav-number">4.</span> <span class="nav-text">The new building code representation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Four-level-representation"><span class="nav-number">4.1.</span> <span class="nav-text">Four-level representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantic-representation——RASE-model"><span class="nav-number">4.2.</span> <span class="nav-text">Semantic representation——RASE model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-new-representation"><span class="nav-number">4.3.</span> <span class="nav-text">The new representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-level"><span class="nav-number">4.3.1.</span> <span class="nav-text">Domain level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule-level"><span class="nav-number">4.3.2.</span> <span class="nav-text">Rule level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule-set-level"><span class="nav-number">4.3.3.</span> <span class="nav-text">Rule-set level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Management-level"><span class="nav-number">4.3.4.</span> <span class="nav-text">Management level</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-code-modeling-methodology"><span class="nav-number">5.</span> <span class="nav-text">Building code modeling methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-Stage"><span class="nav-number">5.1.</span> <span class="nav-text">Analysis Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Determination-of-the-scope"><span class="nav-number">5.1.1.</span> <span class="nav-text">Determination of the scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Decomposition-of-the-building-code"><span class="nav-number">5.1.2.</span> <span class="nav-text">Decomposition of the building code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Classification-of-the-rule-statements"><span class="nav-number">5.1.3.</span> <span class="nav-text">Classification of the rule statements</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Representation-Stage"><span class="nav-number">5.2.</span> <span class="nav-text">Representation Stage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-of-domain-concepts"><span class="nav-number">5.2.1.</span> <span class="nav-text">Representation of domain concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-of-rule-statements"><span class="nav-number">5.2.2.</span> <span class="nav-text">Representation of rule statements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-of-relationships-between-rules"><span class="nav-number">5.2.3.</span> <span class="nav-text">Representation of relationships between rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-of-the-building-code-organization"><span class="nav-number">5.2.4.</span> <span class="nav-text">Representation of the building code organization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-stage"><span class="nav-number">5.3.</span> <span class="nav-text">Implementation stage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-of-the-building-code-model"><span class="nav-number">5.3.1.</span> <span class="nav-text">Implementation of the building code model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testing-and-validation"><span class="nav-number">5.3.2.</span> <span class="nav-text">Testing and validation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Case-study-implementation-and-evaluation"><span class="nav-number">6.</span> <span class="nav-text">Case study(implementation and evaluation)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-of-IMHZCode"><span class="nav-number">6.1.</span> <span class="nav-text">Analysis of IMHZCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Representation-of-IMHZCode"><span class="nav-number">6.2.</span> <span class="nav-text">Representation of IMHZCode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-objects-and-concept-mapping-list"><span class="nav-number">6.2.1.</span> <span class="nav-text">Domain objects and concept mapping list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule-objects"><span class="nav-number">6.2.2.</span> <span class="nav-text">Rule objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule-set-objects"><span class="nav-number">6.2.3.</span> <span class="nav-text">Rule-set objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule-set-group-objects"><span class="nav-number">6.2.4.</span> <span class="nav-text">Rule-set group objects</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation"><span class="nav-number">6.3.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">6.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testing"><span class="nav-number">6.3.2.</span> <span class="nav-text">Testing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">嘉木</span>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共12.8k字</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BIYnD4tJxcoFpEESSzfbsauH-gzGzoHsz", "2u8GJIyu6d2fNFhP4k8p9uBC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
