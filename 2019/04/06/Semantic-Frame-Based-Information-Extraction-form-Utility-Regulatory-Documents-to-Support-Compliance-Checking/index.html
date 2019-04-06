@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Flynn&#39;s World">
 <meta property="og:description" content="这篇文章解决的问题是什么？主要解决的是规范文本的规则抽取问题。因为目前规范文本的规则抽取，无论是传统的手工抽取、标记语言还是结合NLP和语义网等技术，都需要大量的人力。 这篇文章提出了什么样的方法解决目标问题的？结论如何？方法：提出的是一种基于语义框架（Semantic Frame）的信息抽取方法。在拿到一条规则后，进行预处理、语法分析、语义分析（本体标注）、信息元素映射，最后评价。预处理、语义分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T15:31:33.159Z">
+<meta property="og:updated_time" content="2019-04-06T15:35:41.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Semantic Frame-Based Information Extraction form Utility Regulatory Documents to Support Compliance Checking">
 <meta name="twitter:description" content="这篇文章解决的问题是什么？主要解决的是规范文本的规则抽取问题。因为目前规范文本的规则抽取，无论是传统的手工抽取、标记语言还是结合NLP和语义网等技术，都需要大量的人力。 这篇文章提出了什么样的方法解决目标问题的？结论如何？方法：提出的是一种基于语义框架（Semantic Frame）的信息抽取方法。在拿到一条规则后，进行预处理、语法分析、语义分析（本体标注）、信息元素映射，最后评价。预处理、语义分">
@@ -421,14 +421,23 @@
 <li>识别领域概念：依赖领域本体实现</li>
 <li>识别目标词（或者叫触发词）和语义框架：靠触发词确定</li>
 <li>框架元素的边界确认：依赖语法特征（词性标注、短语标注）和语义特征（本体语义标注）实现，其本质上还是一个模式匹配的方法</li>
-<li>框架元素的语义标注：使用自动语义角色标注，框架定好了，框架元素的边界也确定了，然后把角色标注看作一个分类任务，用FrameNet中标记的好的数据训练了一个概率模型，并且在这个概率模型中使用了各种各样的特征（短语类型、解析树路径等等），在标注好角色以后可以把语义关系抽取出来。<h2 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h2>作者测试了语义框架“within_distance”在Indiana Utility Accommodation Policy中的效果，激活词为“within”，准确率为92.32%<h1 id="创新点在哪里？和前人工作的比较"><a href="#创新点在哪里？和前人工作的比较" class="headerlink" title="创新点在哪里？和前人工作的比较"></a>创新点在哪里？和前人工作的比较</h1>文章一上来就提出了”语义合规性检查（Semantic compliance checking）”的观点，我认为这篇文章最主要的创新点在于采用了”语义框架”这样一个概念来解决规则抽取问题。规范中描述规则的自然语言是十分复杂的，但是从语义框架的角度来看，可以将一个复杂的规则语句分解为多个语义框架，每一个语义框架都表述一个固定的语义，但是可能存在不同的表示方法。尽管语义框架确定了，语义框架的范围边界仍然需要划定，而且在确定语义框架的边界范围后，还要对范围内的词语进行语义角色标注，这个过程采用自动语义角色标注是最好的，但是该篇文献并未对具体如何实现自动语义标注做出详细描述和说明，仅仅说采用了一个概率模型来进行语义角色标注。<br>和前人的工作相比，该方法的一个优点在于能把一个复杂描述的规则通过语义框架的方法进行分解，张建松老师的论文中可能也存在这样的一个过程（比如MD+VB匹配后，抽取VB作为quantity relation，这其实是是一个Deontic_rule的语义框架），但是没有理论支撑，而且张建松老师的论文中语义框架的边界确定，语义角色的标注等等完全是高度依赖规则的。<h1 id="该方法有什么不足之处"><a href="#该方法有什么不足之处" class="headerlink" title="该方法有什么不足之处"></a>该方法有什么不足之处</h1>该方法的不足之处我认为有以下几点：</li>
+<li>框架元素的语义标注：使用自动语义角色标注，框架定好了，框架元素的边界也确定了，然后把角色标注看作一个分类任务，用FrameNet中标记的好的数据训练了一个概率模型，并且在这个概率模型中使用了各种各样的特征（短语类型、解析树路径等等），在标注好角色以后可以把语义关系抽取出来。<h2 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h2>作者测试了语义框架“within_distance”在Indiana Utility Accommodation Policy中的效果，激活词为“within”，准确率为92.32%</li>
+</ul>
+<h1 id="创新点在哪里？和前人工作的比较"><a href="#创新点在哪里？和前人工作的比较" class="headerlink" title="创新点在哪里？和前人工作的比较"></a>创新点在哪里？和前人工作的比较</h1><p>文章一上来就提出了”语义合规性检查（Semantic compliance checking）”的观点，我认为这篇文章最主要的创新点在于采用了”语义框架”这样一个概念来解决规则抽取问题。规范中描述规则的自然语言是十分复杂的，但是从语义框架的角度来看，可以将一个复杂的规则语句分解为多个语义框架，每一个语义框架都表述一个固定的语义，但是可能存在不同的表示方法。尽管语义框架确定了，语义框架的范围边界仍然需要划定，而且在确定语义框架的边界范围后，还要对范围内的词语进行语义角色标注，这个过程采用自动语义角色标注是最好的，但是该篇文献并未对具体如何实现自动语义标注做出详细描述和说明，仅仅说采用了一个概率模型来进行语义角色标注。<br>和前人的工作相比，该方法的一个优点在于能把一个复杂描述的规则通过语义框架的方法进行分解，张建松老师的论文中可能也存在这样的一个过程（比如MD+VB匹配后，抽取VB作为quantity relation，这其实是是一个Deontic_rule的语义框架），但是没有理论支撑，而且张建松老师的论文中语义框架的边界确定，语义角色的标注等等完全是高度依赖规则的。</p>
+<h1 id="该方法有什么不足之处"><a href="#该方法有什么不足之处" class="headerlink" title="该方法有什么不足之处"></a>该方法有什么不足之处</h1><p>该方法的不足之处我认为有以下几点：</p>
+<ul>
 <li>实验过程和结果单薄，没有就语义框架的普适性进行证明和实验，而且抽取了具体多少条规则达到了90%+的准确率也没有说明</li>
 <li>其次，全文的样例都以同一句”All lines within 5ft of the roadway should have a minimum depth of cover of 4 ft”说明，而且具体在语义解析过程中，”lines”和本体论中的”pipeline”是怎么对应的没有说明。还有框架元素边界确认中也没有具体说明到底是怎么是怎么把各个元素边界识别的，对于短语结构中的多个NP，你到底选择哪个NP作为框架元素呢？</li>
 <li>语义角色自动标注这一块也存在较多疑惑，到底是如何实现的呢？</li>
-<li>框架激活词非常单一，考虑扩展？<h1 id="启发"><a href="#启发" class="headerlink" title="启发"></a>启发</h1>我认为语义框架可以作为建筑规范信息抽取中的一个工具，起到一个分解复杂规则语句的作用，这样一来就可以针对每个语义框架再来操作，把各个语义框架整合到一起，就是规则要表达的完整语义。采用这种方法我认为需要确定一下几个问题：</li>
+<li>框架激活词非常单一，考虑扩展？</li>
+</ul>
+<h1 id="启发"><a href="#启发" class="headerlink" title="启发"></a>启发</h1><p>我认为语义框架可以作为建筑规范信息抽取中的一个工具，起到一个分解复杂规则语句的作用，这样一来就可以针对每个语义框架再来操作，把各个语义框架整合到一起，就是规则要表达的完整语义。采用这种方法我认为需要确定一下几个问题：</p>
+<ul>
 <li>目前FrameNet中定义的框架是否足以满足建筑规范的信息抽取。该文献中作者说”FrameNet can provide sufficient annotated training data for extracting frame elements from rule sentences”，但是我目前感觉是不够的。</li>
 <li>激活语义框架的词可以用词向量模型扩展</li>
-<li>目前来看，如果使用语义框架应至少包含以下几个步骤：分词、激活所有语义框架、识别每个语义框架所覆盖的范围（边界）、对框架进行语义角色分配，还存在一个问题就是句子中所出现的所有概念（包括名词、动词），都应该在我的本体中一一对应。难点主要在最后两个步骤。<h1 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h1></li>
+<li>目前来看，如果使用语义框架应至少包含以下几个步骤：分词、激活所有语义框架、识别每个语义框架所覆盖的范围（边界）、对框架进行语义角色分配，还存在一个问题就是句子中所出现的所有概念（包括名词、动词），都应该在我的本体中一一对应。难点主要在最后两个步骤。</li>
+</ul>
+<h1 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h1><ul>
 <li>Since more and more design and construction data is represented in the Resource Description Framework(RDF)data model, the underlying semantic and logical basis can provide an effective platform for implementing semantic compliance checking.</li>
 <li>As the critical ingredient of the checking system, rule information needs to be extracted from regulatory texts and be formalized into machine-readable format.</li>
 </ul>
