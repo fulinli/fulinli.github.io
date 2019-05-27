@@ -102,7 +102,7 @@
 <meta property="og:description" content="函数逼近的表达式不一定要经过数据点。  函数逼近需要解决的问题给定区间上的复杂连续函数逼近问题第一种问题：我们已知在给定区间上的连续函数，但是这个函数不方便直接计算，我们需要用更加简单的函数来逼近它。比如让你计算$\sin2$，这是不太好直接计算出来的，再比如给定[0,1]上的函数$\sqrt{x^2+1}$，求$x=0.5$时的值，直接算也是不太好算的，因为要开根号，那么我们希望在这个给定区间">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://fulinli.github.io/2019/05/27/计算方法之函数逼近/1558949654094.png">
-<meta property="og:updated_time" content="2019-05-27T15:17:35.477Z">
+<meta property="og:updated_time" content="2019-05-27T15:22:27.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法之函数逼近">
 <meta name="twitter:description" content="函数逼近的表达式不一定要经过数据点。  函数逼近需要解决的问题给定区间上的复杂连续函数逼近问题第一种问题：我们已知在给定区间上的连续函数，但是这个函数不方便直接计算，我们需要用更加简单的函数来逼近它。比如让你计算$\sin2$，这是不太好直接计算出来的，再比如给定[0,1]上的函数$\sqrt{x^2+1}$，求$x=0.5$时的值，直接算也是不太好算的，因为要开根号，那么我们希望在这个给定区间">
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,455
+                  3,460
                 </span>
               
 
@@ -426,7 +426,7 @@
 <h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="离散点集上的正交多项式"><a href="#离散点集上的正交多项式" class="headerlink" title="离散点集上的正交多项式"></a>离散点集上的正交多项式</h3><p>定义：设有点集$\{x_i\}_{i=0,1,\cdots,m}$，函数$f(x)$和函数$g(x)$在离散意义下的内积定义为$(f,g)=\sum_{i=0}^mw_if(x_i)g(x_i)$其中，$w_i&gt;0$在这里是给定的权数，也就是两个函数对应的函数值相乘再乘上一个权重的总和，称为内积。在离散意义下，函数$f(x)$的2-范数的定义为：$||f||_2=\sqrt{(f,f)}$</p>
 <p>为什么要定义这个内积呢？在给定一些数据点的时候，只是告诉了一些元素，相当于是告诉了我们一个集合。集合中的元素如何做运算并没有说，如果连怎么样做运算都没说那么就谈不上点与点之间的距离，没有距离那我们就无法衡量最近和最远。所以数学中讲空间，是要有运算的，平时可能我们讲空间的时候不太注意，认为空间可能就是一个容纳东西的一个范围，比如一个间教室就是一个空间，但是这其中还隐含着这个教室里面坐第一排的学生和坐最后一排的学生是有一个距离存在的，这个距离是有一种计算的方式的，比如欧氏距离，现实生活中的空间就已经有运算的含义在里面了。那么对于数学中的空间呢？只告诉了元素是不够的，必须要讲明怎么算，如果没有讲清楚怎么算，那么这一些元素我们只能称之为集合，一个集合里面有元素，那么这个集合中的元素再加上运算我们才能讲空间。有了内积之后，我们就可以衡量一个东西的大小，实际上也就可以衡量距离了。比如给你一个函数，这个函数有多大呢？用函数自身与自身的内积再开平方，就是这个函数的大小，也就是2-范数，记为$||f||_2$。这里的2指的是度量的方法，举个例子，用不同的单位长度表示一段距离，米和英寸的数字结果表示是不一样的，有很多种度量的方法，2-范数就是指用乘积再开方的方式算出来的距离。</p>
 <p>有了内积我们才好谈误差，逼近的好坏就体现在误差的大小上。那么正交呢？正交就是指内积等于零。从几何的角度，正交就是垂直，那么现在对于函数，这个垂直就不那么形象了，我们就说内积等于零称为正交。自身与自身的内积一般是不等于零的，除非这个函数在所有点上的值都为零。内积等于零是两个函数之间的正交，那么多个函数正交呢？有下面的定理：若多项式组$\{\phi(x)\}_k=0,1,\cdots,n$在离散意义下的内积满足<script type="math/tex">(\phi_i,\phi_j)=\begin{cases} 0,i\neq j\\a_i>0,i=j \end {cases}</script>也就是多项式组中任意两个函数的内积都为零，但自身与自身的内积大于零。注意一下这里包括之前定义内积使用的数学符号，数据点集是有$m$个，多项式组中的函数有$n+1$个，即第i个函数和第j个函数在所有点上的函数值的乘积再乘上权数求和，就是内积$(\phi_i,\phi_j)=\sum_{k=0}^{m} w_k\phi_i(x_k)\phi_j(x_k)$。接下来我们就再看怎么把这个正交多项式给“造”出来，正交函数到底是一个什么样的函数？有下列公式：给定点集$\{x_i\}_{i=0,1,\cdots,m}$和权数$\{w_i\}_{i=0,1,\cdots,m}$，并且点集$\{x_i\}_{i=0,1,\cdots,m}$中至少有n+1个互异，则由下列<strong>三项递推公式</strong>：</p>
-<script type="math/tex; mode=display">\begin{cases} P_0(x)=1\\P_1(x)=x-a_0\\P_{k+1}(x)=(x-a_k)P_k(x)-b_kP_{k-1}(x),k=1,2,\cdots,n-1 \end {cases}</script><p>例如$P_2(x)=(x-a_1)P_1(x)-b_1P_0(x)=(x-a_1)(x-a_0)-b_1$，按照这个形式，可以一直递推下去。但是$a_0,a_1,b_1,\cdots,a_k,b_k$这些变量我们还不知道，通过这些系数保证我们的多项式是正交的。令$(P_0,P_1)=\sum_{k=0}^{m} w_kP_0(x_k)P_1(x_k)=\sum_{k=0}^{m}w_k<em>1</em>(x_k-a_0)=0$，这个方程中除了$a_0$以外所有的值我们都知道，所以可以可以求解这个方程得到</p>
+<script type="math/tex; mode=display">\begin{cases} P_0(x)=1\\P_1(x)=x-a_0\\P_{k+1}(x)=(x-a_k)P_k(x)-b_kP_{k-1}(x),k=1,2,\cdots,n-1 \end {cases}</script><p>例如$P_2(x)=(x-a_1)P_1(x)-b_1P_0(x)=(x-a_1)(x-a_0)-b_1$，按照这个形式，可以一直递推下去。但是$a_0,a_1,b_1,\cdots,a_k,b_k$这些变量我们还不知道，通过这些系数保证我们的多项式是正交的。令$(P_0,P_1)=\sum_{k=0}^{m}w_kP_0(x_k)P_1(x_k)=\sum_{k=0}^{m}w_k\cdot 1\cdot (x_k-a_0)=0$，这个方程中除了$a_0$以外所有的值我们都知道，所以可以可以求解这个方程得到</p>
 <script type="math/tex; mode=display">a_0=\frac {\sum_{k=0}^mw_kx_k}{\sum_{k=0}^mw_k}</script><p>从而也就确定了$P_1(x)$。可以看到计算$a_0$的这个方程很大，不方便记忆，所以我们就尽量把这个记号化成我们熟悉的记号</p>
 <script type="math/tex; mode=display">a_0=\frac {\sum_{k=0}^mw_kx_k}{\sum_{k=0}^mw_k}=\frac{(x,1)}{(1,1)}</script><p>这里$(x,1)$就是$x$在$k$点的值和1在$k$点的值的乘积的和，就是$x$和1的内积，$(1,1)$也是同样的道理。</p>
 <p>那么类似的我们可以推导$a_1,b_1$，比如$P_2(x)$，它里面有$a_1,b_1$两个未知数，而且它同时要和$P_0(x),P_1(x)$正交，也就是要令$(P_0,P_2)=0，(P_1,P_2)=0$，那么这两个形成的等式就正好可以把两个未知数解出来。当把每个递推函数中的未知量用内积的符号来表示了之后，就很简洁了：</p>
@@ -444,7 +444,7 @@
 <h4 id="Chebyshev多项式"><a href="#Chebyshev多项式" class="headerlink" title="Chebyshev多项式"></a>Chebyshev多项式</h4><p>当权函数$w(x)=\frac{1}{\sqrt{1-x^2}}$，区间为[-1,1]时，由$\{1,x,\cdots,x^n,\cdots\}$正交化得到的多项式称为Chebyshev多项式，也称第一类Chebyshev多项式，由三项递推公式得</p>
 <script type="math/tex; mode=display">\begin{cases} T_0(x)=1\\T_1(x)=x\\T_{n+1}(x)=2xT_n(x)-T_{n-1}(x),n=1,2,\cdots \end {cases}</script><p>那么两个函数的内积为$(T_i,T_j)=\int_{-1}^{1}\frac {T_i(x)T_j(x)}{\sqrt{1-x^2}}$</p>
 <p>$T_n(x)=\cos (n \arccos x), |x|\le1$，是个假的三角函数</p>
-<p>函数逼近，是指对<strong>函数类A中给定的函数$f(x)$，记为$f(x)\in A$，要求在另一类简单的便于计算的函数类B中求函数$p(x)\in B$，使$p(x)$与$f(x)$的误差在某种度量意义下最小。</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数逼近，是指对<strong>函数类A中给定的函数$f(x)$，记为$f(x)\in A$，要求在另一类简单的便于计算的函数类B中求函数$p(x)\in B$，使$p(x)$与$f(x)$的误差在某种度量意义下最小。</strong></p>
 <p>数学上常把在各种集合中引入某些不同的确定关系称为赋予集合以某种空间结构，并将这样的集合称为空间。例如将所有实$n$维向量组成的集合，按向量加法及向量与数的乘法构成实数域上的线性空间，记作$\mathbb {R}^n$，称为$n$维向量空间。</p>
 <p>类似的，对于次数不超过$n$的实系数多项式全体，按通常多项式与多项式加法以及多项式与数的乘法也构成数域$\mathbb {R}$上的一个线性空间，用$H_n$表示，称为<strong>多项式空间</strong>。</p>
 <p>所有定义在$[a,b]$上的连续函数集合，按函数加法和函数与数的乘法构成数域$\mathbb{R}$上的线性空间，记作$C[a,b]$。类似地，记$C^p[a,b]$为具有$p$阶连续导数的函数空间。</p>
@@ -695,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数逼近需要解决的问题"><span class="nav-number">1.</span> <span class="nav-text">函数逼近需要解决的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#给定区间上的复杂连续函数逼近问题"><span class="nav-number">1.1.</span> <span class="nav-text">给定区间上的复杂连续函数逼近问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给定数据点下的函数逼近问题"><span class="nav-number">1.2.</span> <span class="nav-text">给定数据点下的函数逼近问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正交多项式"><span class="nav-number">2.</span> <span class="nav-text">正交多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散点集上的正交多项式"><span class="nav-number">2.1.</span> <span class="nav-text">离散点集上的正交多项式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续区间上的正交多项式"><span class="nav-number">2.2.</span> <span class="nav-text">连续区间上的正交多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Legendre多项式"><span class="nav-number">2.2.1.</span> <span class="nav-text">Legendre多项式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chebyshev多项式"><span class="nav-number">2.2.2.</span> <span class="nav-text">Chebyshev多项式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数逼近需要解决的问题"><span class="nav-number">1.</span> <span class="nav-text">函数逼近需要解决的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#给定区间上的复杂连续函数逼近问题"><span class="nav-number">1.1.</span> <span class="nav-text">给定区间上的复杂连续函数逼近问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给定数据点下的函数逼近问题"><span class="nav-number">1.2.</span> <span class="nav-text">给定数据点下的函数逼近问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正交多项式"><span class="nav-number">2.</span> <span class="nav-text">正交多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散点集上的正交多项式"><span class="nav-number">2.1.</span> <span class="nav-text">离散点集上的正交多项式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续区间上的正交多项式"><span class="nav-number">2.2.</span> <span class="nav-text">连续区间上的正交多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Legendre多项式"><span class="nav-number">2.2.1.</span> <span class="nav-text">Legendre多项式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chebyshev多项式"><span class="nav-number">2.2.2.</span> <span class="nav-text">Chebyshev多项式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
