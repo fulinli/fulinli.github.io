@@ -102,7 +102,7 @@
 <meta property="og:description" content="对未来的最大慷慨，是把一切献给现在。  函数逼近需要解决的问题给定区间上的复杂连续函数逼近问题第一类问题：我们已知在给定区间上的连续函数，但是这个函数不方便直接计算，我们需要用更加简单的函数来逼近它。比如让你计算$\sin2$，这是不太好直接计算出来的，再比如给定[0,1]上的函数$\sqrt{x^2+1}$，求$x=0.5$时的值，直接算也是不太好算的，因为要开根号，那么我们希望在这个给定区间">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://fulinli.github.io/2019/05/27/计算方法之函数逼近/1558949654094.png">
-<meta property="og:updated_time" content="2019-05-29T13:28:35.190Z">
+<meta property="og:updated_time" content="2019-05-29T13:33:18.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法之函数逼近">
 <meta name="twitter:description" content="对未来的最大慷慨，是把一切献给现在。  函数逼近需要解决的问题给定区间上的复杂连续函数逼近问题第一类问题：我们已知在给定区间上的连续函数，但是这个函数不方便直接计算，我们需要用更加简单的函数来逼近它。比如让你计算$\sin2$，这是不太好直接计算出来的，再比如给定[0,1]上的函数$\sqrt{x^2+1}$，求$x=0.5$时的值，直接算也是不太好算的，因为要开根号，那么我们希望在这个给定区间">
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  4,588
+                  4,701
                 </span>
               
 
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  17
+                  18
                 </span>
               
             </div>
@@ -443,13 +443,9 @@
 <p>设集合$S$是数域$P$上的线性空间，元素$x_1,x_2,\cdots, x_n\in S$，如果存在不全为零的数$\alpha_1,\alpha_2,\cdots,\alpha_n\in P$，使得</p>
 <script type="math/tex; mode=display">\alpha_1x_1+\alpha_2x_2+\cdots+\alpha_nx_n=0</script><p>则称$x_1,x_2,\cdots,x_n$线性相关，否则若只对$\alpha_1=\alpha_2=\cdots=\alpha_n=0$成立，则称$x_1,x_2,\cdots,x_n$线性无关。</p>
 <p>若线性空间$S$是由$n$个线性无关元素$x_1,x_2,\cdots,x_n$生成的，即对$\forall x\in S$都有</p>
-<script type="math/tex; mode=display">x=\alpha_1x_1+\alpha_2x_2+\cdots+\alpha_nx_n$$，
-
-则称$x_1,x_2,\cdots, x_n$是空间$S$的一组**基**，记为$S = \mathbf{span}\{x_1,x_2,\cdots,x_n\}$，并称空间$S$为**$n$维空间**，系数$\alpha_1,\alpha_2,\cdots,\alpha_n$称为$x$在基$x_1,x_2,\cdots, x_n$下的**坐标**，记作$( \alpha_1,\alpha_2,\cdots,\alpha_n)$，如果$S$中有无限个线性无关元素$x_1,x_2,\cdots, x_n,\cdots$，则称$S$为**无限维线性空间**。
-
-对于次数不超过$n$的多项式集合$H_n$，其元素$p(x)\in H_n$表示为：
-
-$$p(x)=a_0+a_1x+a_2x^2+a_3x^3+\cdots+a_nx^n</script><p>它由$n+1$个系数$(a_0,a_1,a_2,\cdots,a_n)$唯一确定。$1,x,x^2,x^3,\cdots x^n$线性无关，它是$H_n$的一组基，即$H_n = \mathbf{span}\{1,x,x^2,x^3,\cdots,x_n\}$，且$(a_0,a_1,a_2,\cdots,a_n)$是$p(x)$的向量坐标</p>
+<script type="math/tex; mode=display">x=\alpha_1x_1+\alpha_2x_2+\cdots+\alpha_nx_n</script><p>则称$x_1,x_2,\cdots, x_n$是空间$S$的一组<strong>基</strong>，记为$S = \mathbf{span}\{x_1,x_2,\cdots,x_n\}$，并称空间$S$为<strong>$n$维空间</strong>，系数$\alpha_1,\alpha_2,\cdots,\alpha_n$称为$x$在基$x_1,x_2,\cdots, x_n$下的<strong>坐标</strong>，记作$( \alpha_1,\alpha_2,\cdots,\alpha_n)$，如果$S$中有无限个线性无关元素$x_1,x_2,\cdots, x_n,\cdots$，则称$S$为<strong>无限维线性空间</strong>。</p>
+<p>对于次数不超过$n$的多项式集合$H_n$，其元素$p(x)\in H_n$表示为：</p>
+<script type="math/tex; mode=display">p(x)=a_0+a_1x+a_2x^2+a_3x^3+\cdots+a_nx^n</script><p>它由$n+1$个系数$(a_0,a_1,a_2,\cdots,a_n)$唯一确定。$1,x,x^2,x^3,\cdots x^n$线性无关，它是$H_n$的一组基，即$H_n = \mathbf{span}\{1,x,x^2,x^3,\cdots,x_n\}$，且$(a_0,a_1,a_2,\cdots,a_n)$是$p(x)$的向量坐标</p>
 <p><strong>对连续函数$f(x)\in C[a,b]$，它不能用有限个线性无关的函数表示，故$C[a,b]$是无限维的，但它的任一元素$f(x)\in C[a,b]$均可用有限维的$p(x)\in H_n$逼近，使误差$\underset{a \le x \le b }{\operatorname{max}}|f(x)-p(x)|&lt;\epsilon$（$\epsilon$为任给的小正数），这就是著名的Weierstrass定理</strong></p>
 <p>因此Weierstrass定理给函数逼近提供了一条思路，通过有限维线性多项式空间中的向量（也就是由若干基的线性组合）来逼近无限维连续函数空间中的向量（也就是已知的连续函数）</p>
 <h3 id="范数与赋范线性空间"><a href="#范数与赋范线性空间" class="headerlink" title="范数与赋范线性空间"></a>范数与赋范线性空间</h3><p>如果说我们能用有限维多项式空间中的向量来“表示”无限维连续函数空间中的向量，那么我们应该如何来衡量这两个向量的大小，也就是说判断我们这个逼近的好坏呢？这时候就需要引入范数的概念。</p>
@@ -781,7 +777,7 @@ $$p(x)=a_0+a_1x+a_2x^2+a_3x^3+\cdots+a_nx^n</script><p>它由$n+1$个系数$(a_0
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.8k字</span>
+  <span class="post-count">博客全站共18.9k字</span>
 </div>
 
         
